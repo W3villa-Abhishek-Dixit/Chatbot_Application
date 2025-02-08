@@ -36,14 +36,23 @@ const App = () => {
     };
 
     return (
-        <div style={{ maxWidth: "600px", margin: "auto", padding: "20px" }}>
-            <h2>Chatbot</h2>
+        <div style={{
+            maxWidth: "600px",
+            margin: "auto",
+            padding: "20px",
+            backgroundColor: "#f4f4f4",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 10px rgba(0,0,0,0.1)"
+        }}>
+            <h2 style={{ textAlign: "center", color: "#333" }}>Chatbot</h2>
             <div
                 style={{
-                    border: "1px solid #ccc",
+                    border: "1px solid #ddd",
                     padding: "10px",
                     minHeight: "300px",
                     overflowY: "auto",
+                    backgroundColor: "#fff",
+                    borderRadius: "8px"
                 }}
             >
                 {messages.map((msg, index) => (
@@ -52,6 +61,12 @@ const App = () => {
                         style={{
                             textAlign: msg.sender === "user" ? "right" : "left",
                             marginBottom: "10px",
+                            padding: "10px",
+                            borderRadius: "10px",
+                            display: "inline-block",
+                            maxWidth: "80%",
+                            backgroundColor: msg.sender === "user" ? "#007bff" : "#ddd",
+                            color: msg.sender === "user" ? "#fff" : "#000"
                         }}
                     >
                         <strong>{msg.sender === "user" ? "You" : "Bot"}:</strong> {msg.text}
@@ -63,9 +78,27 @@ const App = () => {
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    style={{ flex: "1", padding: "10px" }}
+                    placeholder="Type a message..."
+                    style={{
+                        flex: "1",
+                        padding: "10px",
+                        borderRadius: "5px",
+                        border: "1px solid #ddd",
+                        outline: "none"
+                    }}
                 />
-                <button onClick={sendMessage} style={{ padding: "10px", marginLeft: "5px" }}>
+                <button
+                    onClick={sendMessage}
+                    style={{
+                        padding: "10px 15px",
+                        marginLeft: "5px",
+                        backgroundColor: "#007bff",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "5px",
+                        cursor: "pointer"
+                    }}
+                >
                     Send
                 </button>
             </div>
